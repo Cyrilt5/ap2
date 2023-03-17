@@ -83,6 +83,6 @@ function insert_user($pdo,$heures, $date, $idprio, $iduser){
                             FROM resservation r 
                             WHERE r.dates =? AND r.heure = ?
                         )");
-    $stmt->execute(arrays($dates,$heures));
+    $stmt->execute(array($dates,$heures));
     return $stmt;
  }

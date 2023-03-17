@@ -24,7 +24,10 @@
                     <h4>quelle est la date de votre reservation?</h4>
                         <SELECT name="prio" id="prio" size="1">
                         <OPTION>-----
-s
+                        <?php   require 'requete.php';
+                                
+                            
+                            ?>
                         </SELECT>
                 </article>
             </div>-->
@@ -68,7 +71,17 @@ s
                             </SELECT>
                     </article>
 <!--*******************************************************fenétre qui s'affiche quand on choisie quelque chose sur les ****************************************************-->
+                    <div id="display-element" style="display:none;">
+                    <article class="col-md-3">
+                        <h4>quelle salle vouler vous reserver ?</h4>
+                            <SELECT name="salle" id="heure" size="1">
+                            <OPTION>
+                            </SELECT>
 
+                        <p id="resultat"></p>
+                        <p id="resultat2"></p>
+                    </article>
+                    </div>
                 </div>
                     <div class="row" style="margin-top: 15px">
                 </br>
@@ -79,5 +92,6 @@ s
                 </div>  
             </form>
         </div>
+        <script src="utilisateur.js"></script>
     </body>
 </html>
