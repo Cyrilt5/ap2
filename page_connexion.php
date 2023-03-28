@@ -12,7 +12,7 @@ ini_set("display_errors", 1);
 <body>
     <div class="container">
         <div class="row">
-            <article class="col-md-5">
+            <article class="col-md-4">
                 <h5 class="d-inline p-2 text-bg-dark">maison des ligue de lorraine</h5>
                 <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 15px">page de connexion</h6>
             </article>
@@ -24,7 +24,7 @@ ini_set("display_errors", 1);
                     <input id="user" type ="text" class="text-primary" name="user" required><br/>
             </article>
 
-            <article class="col-md-3">
+            <article class="col-md-4">
                     <label for="password">password :</label>
                     <input id="password" type ="password" name="password" required>
             </article>

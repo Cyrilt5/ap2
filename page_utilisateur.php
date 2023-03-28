@@ -1,3 +1,6 @@
+<?php
+print_r($_SESSION);
+?>
 <!DOCTYPE html>
     <html>
         <head>
@@ -7,11 +10,11 @@
     <body>
     <div class="container">
             <div class="row">
-                <article class="col-md-5">
+                <article class="col-md-7">
                     <nav class = "navbar navbar-inverse">
                         <div class="container-fluid">
                             <div class="navbar-header"> 
-                                <h5 class="d-inline p-2 text-bg-dark">maison des ligue</h5>
+                                <h5 class="d-inline p-2 text-bg-dark">maison des ligue de lorraine</h5>
                                 <h5 class="d-inline p-2 text-bg-dark" style="margin-top: 15px">page d'accueil</h5>
                                 <button class="d-inline p-2 text-bg-dark" onclick="window.location.href = 'deconexion.php'">deconnexion </button>
                             </div>
@@ -32,11 +35,11 @@ s
                 <div class="row" style="margin-top: 15px">
                     <article class="col-md-3">
                         <h4>quelle est la date de votre reservation?</h4>
-                        <p>il est impossible de reserver pour la journé actuelle</p>
-                            <SELECT name="date" id="date" size="1">
+                            <input type="date" name="date" id="date"/>
+                            <!--<SELECT name="date" id="date" size="1">
                             <OPTION>
                             <?php      
-                                $jour_actuel = date("Y-m-d");
+                                /**$jour_actuel = date("Y-m-d");
                                 for ($i = 0; $i < 365; $i++) {
                                     $jour = date("Y-m-d", strtotime("+$i days"));
                                     if ($jour == $jour_actuel) {
@@ -49,9 +52,9 @@ s
                                 echo "<OPTION value=".$date_jour.">" . $date_jour . "</OPTION>";
                                 }
 
-                               // echo "</table>";
-                            ?>  
-                            </SELECT>
+                               // echo "</table>";*/
+                            ?> 
+                            </SELECT>-->
                     </article>
                 </div>
                 <div class="row" style="margin-top: 15px">
@@ -61,11 +64,11 @@ s
                             <SELECT name="heure" id="heure" size="1">
                             <OPTION>
                             <?php
-                            for ($i = 8; $i < 21; $i++) {
-                            echo "<OPTION value=".date("H:i:s", strtotime("$i:00:00")).">"  . date("H:i:s", strtotime("$i:00:00")) . "</OPTION>";
-                            }
+                                for ($i = 8; $i < 21; $i++) {
+                                echo "<OPTION value=".date("H:i:s", strtotime("$i:00:00")).">"  . date("H:i:s", strtotime("$i:00:00")) . "</OPTION>";
+                                }
                             ?>
-                            </SELECT>
+                              </SELECT>
                     </article>
 <!--*******************************************************fenétre qui s'affiche quand on choisie quelque chose sur les ****************************************************-->
 

@@ -31,7 +31,7 @@ function connexion(){
 $pdo=connexion();
 function userexist($pdo){
     $stmt = $pdo->prepare("
-        SELECT login, mdp
+        SELECT login, mdp,id_user
         FROM user
         WHERE login= ? and mdp= ? "
     );
@@ -39,8 +39,8 @@ function userexist($pdo){
 return $stmt;
 }
 
-function insert_user($pdo,$heures, $date, $idprio, $iduser){
-    $stmt = $pdo->prepare("INSERT INTO `reservation`( `date`,`heure`, `id_salle`, `iduser`) VALUES (?,?,?,?)");
+function insert_reservation($pdo,$heures, $date, $idprio, $iduser){
+    $stmt = $pdo->prepare("INSERT INTO `reservation`( `date`,`heure`, `id_salle`, `id_user`) VALUES (?,?,?,?)");
     $stmt->execute(array($date,$heures, $id_salle, $iduser));
     return $stmt;
  }
@@ -84,5 +84,15 @@ function insert_user($pdo,$heures, $date, $idprio, $iduser){
                             WHERE r.dates =? AND r.heure = ?
                         )");
     $stmt->execute(array($dates,$heures));
+    return $stmt;
+ }
+ function reservation($pdo){
+    $stmt=$pdo->prepare("SELECT r.`dates`,r.`heure`,s.`nom_salle`,u.`login`,r.`id_salle`
+                         FROM `resservation` r 
+                         INNER JOIN `user` u 
+                         ON u.id_user=r.id_user                        
+                         INNER JOIN `salle` s
+                         ON s.id_salle=r.id_salle;");
+    $stmt->execute();
     return $stmt;
  }
