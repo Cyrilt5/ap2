@@ -14,7 +14,7 @@ print_r($_SESSION);
                     <nav class = "navbar navbar-inverse">
                         <div class="container-fluid">
                             <div class="navbar-header"> 
-                                <h5 class="d-inline p-2 text-bg-dark">maison des ligue de lorraine</h5>
+                                <h5 class="d-inline p-2 text-bg-dark">maison des ligues de lorraine</h5>
                                 <h5 class="d-inline p-2 text-bg-dark" style="margin-top: 15px">page d'accueil</h5>
                                 <button class="d-inline p-2 text-bg-dark" onclick="window.location.href = 'deconexion.php'">deconnexion </button>
                             </div>
@@ -73,14 +73,21 @@ s
 <!--*******************************************************fenétre qui s'affiche quand on choisie quelque chose sur les ****************************************************-->
 
                 </div>
-                    <div class="row" style="margin-top: 15px">
+                    
                 </br>
                 <div class="row">
                     <article class="col-md-1">
-                    <button class="btn btn-danger" type ="submit">ok</button>
+                        <button class="btn btn-danger" type ="submit">ok</button>
                     </article>
                 </div>  
             </form>
+            <div class="row" style="margin-top: 15px">
+                <form action= "planing.php" method="post">
+                    <article class="col-md-3">
+                        <button class="btn btn-danger" type ="submit">voir le planing des salles</button>
+                    </article>
+                </form>
+            </div>
         </div>
     </body>
 </html>

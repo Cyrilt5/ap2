@@ -39,8 +39,8 @@ function userexist($pdo){
 return $stmt;
 }
 
-function insert_reservation($pdo,$heures, $date, $idprio, $iduser){
-    $stmt = $pdo->prepare("INSERT INTO `reservation`( `date`,`heure`, `id_salle`, `id_user`) VALUES (?,?,?,?)");
+function insert_reservation($pdo,$heures, $date, $id_salle, $iduser){
+    $stmt = $pdo->prepare("INSERT INTO `resservation` ( `dates`, `heure`, `id_salle`, `id_user`) VALUES (?, ?, ?, ?)");
     $stmt->execute(array($date,$heures, $id_salle, $iduser));
     return $stmt;
  }
@@ -62,6 +62,11 @@ function insert_reservation($pdo,$heures, $date, $idprio, $iduser){
     $stmt->execute();
     return $stmt;
  }
+ function salle($pdo){
+    $stmt=$pdo->prepare("SELECT r.`dates`,r.heure,s.nom_salle,u.login FROM `resservation` r INNER JOIN salle s on s.id_salle = r.id_salle INNER JOIN user u on u.id_user= r.id_user");
+    $stmt->execute();
+    return $stmt;
+ }
 
  function update_demande($pdo,$idetat,$numdemande){
     $stmt=$pdo->prepare("UPDATE `demande` SET idetat= ? WHERE numdemande= ? ");
@@ -76,7 +81,7 @@ function insert_reservation($pdo,$heures, $date, $idprio, $iduser){
  }
 
  function salle_dispo($pdo,$dates,$heures){
-    $stmt=$pdo->prepare("SELECT s.nom_salle 
+    $stmt=$pdo->prepare("SELECT s.nom_salle,s.id_salle
                         FROM salle s 
                         WHERE s.id_salle NOT IN (
                             SELECT r.id_salle 

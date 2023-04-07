@@ -2,7 +2,7 @@
 session_start();
 require("requete.php");
 $pdo=connexion();
-insert_reservation($pdo,$_SESSION['date'],$_SESSION['heure'],$_SESSION['id_salle'],$_SESSION['id_user']);
+//insert_reservation($pdo,$_POST['date'],$_POST['heure'],$_POST['id_salle'],$_POST['id_user']);
 $stmt=reservation($pdo);
 $i=0;
 while ($row =$stmt->fetch()){
@@ -11,6 +11,7 @@ while ($row =$stmt->fetch()){
     $heure[$i]=$row['heure'];
     $salle[$i]=$row['nom_salle'];
 }
+print_r($_POST)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +31,7 @@ while ($row =$stmt->fetch()){
                             <div class="container-fluid">
                                 <div class="navbar-header"> 
                                     <button class="d-inline p-2 text-bg-dark" onclick="window.location.href = 'page_utilisateur.php'">retour </button>
-                                    <h5 class="d-inline p-2 text-bg-dark">maison des ligue de lorraine</h5>
+                                    <h5 class="d-inline p-2 text-bg-dark">maison des ligues de lorraine</h5>
                                     <h5 class="d-inline p-2 text-bg-dark" style="margin-top: 15px">page d'accueil</h5>
                                     <button class="d-inline p-2 text-bg-dark" onclick="window.location.href = 'deconexion.php'">deconnexion </button>
                                     
