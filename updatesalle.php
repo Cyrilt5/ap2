@@ -36,7 +36,6 @@
                                 <button class="d-inline p-2 text-bg-dark" onclick="window.location.href = 'salle_dispo.php'">retour </button>
                                 <h5 class="d-inline p-2 text-bg-dark">maison des ligues de lorraine</h5>
                                 <button class="d-inline p-2 text-bg-dark" onclick="window.location.href = 'deconexion.php'">deconnexion </button>
-                                <button class="d-inline p-2 text-bg-dark" onclick="window.location.href = 'planing.php'">planing </button>
                             </div>
                         </div>
                     </nav>
