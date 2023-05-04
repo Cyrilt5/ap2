@@ -1,5 +1,5 @@
 <?php
-print_r($_SESSION);
+session_start();
 ?>
 <!DOCTYPE html>
     <html>
@@ -36,25 +36,6 @@ s
                     <article class="col-md-3">
                         <h4>quelle est la date de votre reservation?</h4>
                             <input type="date" name="date" id="date"/>
-                            <!--<SELECT name="date" id="date" size="1">
-                            <OPTION>
-                            <?php      
-                                /**$jour_actuel = date("Y-m-d");
-                                for ($i = 0; $i < 365; $i++) {
-                                    $jour = date("Y-m-d", strtotime("+$i days"));
-                                    if ($jour == $jour_actuel) {
-                                        continue;
-                                    }
-                                    // Exécutez le reste du code de la boucle pour les journées qui ne sont pas égales à la journée actuelle
-                                $timestamp_aujourdhui = strtotime($jour_actuel);
-                                $timestamp_jour = $timestamp_aujourdhui + $i * 24 * 3600;
-                                $date_jour = date("Y-m-d", $timestamp_jour);
-                                echo "<OPTION value=".$date_jour.">" . $date_jour . "</OPTION>";
-                                }
-
-                               // echo "</table>";*/
-                            ?> 
-                            </SELECT>-->
                     </article>
                 </div>
                 <div class="row" style="margin-top: 15px">
@@ -70,8 +51,6 @@ s
                             ?>
                               </SELECT>
                     </article>
-<!--*******************************************************fenétre qui s'affiche quand on choisie quelque chose sur les ****************************************************-->
-
                 </div>
                     
                 </br>
@@ -82,9 +61,16 @@ s
                 </div>  
             </form>
             <div class="row" style="margin-top: 15px">
-                <form action= "planing.php" method="post">
+                <form action= "salle_dispo.php" method="post">
                     <article class="col-md-3">
                         <button class="btn btn-danger" type ="submit">voir le planing des salles</button>
+                    </article>
+                </form>
+            </div>
+            <div class="row" style="margin-top: 15px">
+                <form action= "cest_lheure_de_la_purge.php" method="post">
+                    <article class="col-md-3">
+                        <button class="btn btn-danger" type ="submit">purge</button>
                     </article>
                 </form>
             </div>

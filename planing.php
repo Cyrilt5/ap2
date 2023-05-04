@@ -1,17 +1,18 @@
 <?php 
 session_start();
-require("requete.php");
-$pdo=connexion();
-//insert_reservation($pdo,$_POST['date'],$_POST['heure'],$_POST['id_salle'],$_POST['id_user']);
-$stmt=reservation($pdo);
+require("requete.php");//appelle page de requête
+$pdo=connexion();//appelle fonction pour connexion a bdd
+
 $i=0;
+// stocker les données de la bdd dans des tableaux 
+$stmt=reservation($pdo,$_POST['salle']);// Récupérer les données nécessaires depuis la base de données
 while ($row =$stmt->fetch()){
     $i++;
     $dates[$i]=$row['dates'];
     $heure[$i]=$row['heure'];
     $salle[$i]=$row['nom_salle'];
 }
-print_r($_POST)
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +31,7 @@ print_r($_POST)
                         <nav class = "navbar navbar-inverse">
                             <div class="container-fluid">
                                 <div class="navbar-header"> 
-                                    <button class="d-inline p-2 text-bg-dark" onclick="window.location.href = 'page_utilisateur.php'">retour </button>
+                                    <button class="d-inline p-2 text-bg-dark" onclick="window.location.href = 'salle_dispo.php'">retour </button>
                                     <h5 class="d-inline p-2 text-bg-dark">maison des ligues de lorraine</h5>
                                     <h5 class="d-inline p-2 text-bg-dark" style="margin-top: 15px">page d'accueil</h5>
                                     <button class="d-inline p-2 text-bg-dark" onclick="window.location.href = 'deconexion.php'">deconnexion </button>
@@ -42,11 +43,8 @@ print_r($_POST)
                 </div>
         </div>
             <?php
-            // Récupérer les données nécessaires depuis la base de données
-            // et stocker les données dans un tableau $planning
-                print_r($_SESSION);
-                echo'</br>';
-                print_r($dates);
+            
+            
                 $j=0;
                 echo'
                     <div class="planning">
@@ -55,14 +53,19 @@ print_r($_POST)
                             <div class="planning-cell planning-header">Heure</div>
                             <div class="planning-cell planning-header">salle prise</div>
                         </div>';
+                $date_prochaine = date('Y-m-d', strtotime('+7 day'));
                 while($j<count($dates)){
                     $j++;
-                    echo'        
-                            <div class="planning-row">
-                                <div class="planning-cell">'.$dates[$j].'</div>
-                                <div class="planning-cell">'.$heure[$j].'</div>
-                                <div class="planning-cell">'.$salle[$j].'</div>
-                            </div>';
+                    if($dates[$j]<=$date_prochaine){
+
+                        echo'        
+                                <div class="planning-row">
+                                    <div class="planning-cell">'.$dates[$j].'</div>
+                                    <div class="planning-cell">'.$heure[$j].'</div>
+                                    <div class="planning-cell">'.$salle[$j].'</div>
+                                </div>';
+                    }
+                            
                     
             }
               echo'</div>';

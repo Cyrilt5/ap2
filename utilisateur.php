@@ -6,13 +6,12 @@
     $j=0;
     $_SESSION['date'] = $_POST['date'];
     $_SESSION['heure'] = $_POST['heure'];
+    $id_salle=[];
     while ($row =$stmt->fetch()){
         $j++;
-        $nombresalle[$j] = $row['nom_salle'];
-        $_SESSION['nom_salle'.$j] = $row['nom_salle'];
-        $_SESSION['id_salle'] = $row['id_salle'];
+        $nomsalle[$j] = $row['nom_salle'];
+        $id_salle[$j] = $row['id_salle'];
     }
-    //print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +38,7 @@
             </div>
         </br> 
         <div class="row" style="margin-top: 15px">
-            <form action= "planing.php" method="post">
+            <form action= "reservation_faite.php" method="post">
                 <article class="col-md-5">
                     <input type="date" value="<?php echo $_POST["date"]; ?>" name="date" id="date" disabled/>
                     <input type="heure" value="<?php echo $_POST["heure"]; ?>" name="heure" id="heure" disabled/>
@@ -47,8 +46,8 @@
                         <SELECT name="salle" id="heure" size="1">
                         <OPTION>
                         <?php
-                            for($i=1;$i<COUNT($nombresalle)+1;$i++){
-                                print_r("<OPTION value='".$nombresalle[$i]."'>".$nombresalle[$i]."</OPTION>");
+                            for($i=1;$i<COUNT($nomsalle)+1;$i++){
+                                print_r("<OPTION value='".$id_salle[$i]."'>".$nomsalle[$i]."</OPTION>");
                             }
                         ?>
                         </SELECT>
