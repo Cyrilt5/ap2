@@ -44,7 +44,7 @@
             </div>
         </br> 
         <div class="row" style="margin-top: 15px">
-        <form action= "sallecreer.php" method="post">
+        <form action= "sallemodifier.php" method="post">
                 <article class="col-md-5">
                     <h4>voulez-vous créer une salle ?</h4><br/><br/>
 
